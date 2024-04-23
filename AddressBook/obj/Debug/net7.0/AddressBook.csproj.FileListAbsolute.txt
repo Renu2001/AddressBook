@@ -1,0 +1,14 @@
+D:\BridgeLabz Assignment\AddressBook\AddressBook\bin\Debug\net7.0\AddressBook.exe
+D:\BridgeLabz Assignment\AddressBook\AddressBook\bin\Debug\net7.0\AddressBook.deps.json
+D:\BridgeLabz Assignment\AddressBook\AddressBook\bin\Debug\net7.0\AddressBook.runtimeconfig.json
+D:\BridgeLabz Assignment\AddressBook\AddressBook\bin\Debug\net7.0\AddressBook.dll
+D:\BridgeLabz Assignment\AddressBook\AddressBook\bin\Debug\net7.0\AddressBook.pdb
+D:\BridgeLabz Assignment\AddressBook\AddressBook\obj\Debug\net7.0\AddressBook.GeneratedMSBuildEditorConfig.editorconfig
+D:\BridgeLabz Assignment\AddressBook\AddressBook\obj\Debug\net7.0\AddressBook.AssemblyInfoInputs.cache
+D:\BridgeLabz Assignment\AddressBook\AddressBook\obj\Debug\net7.0\AddressBook.AssemblyInfo.cs
+D:\BridgeLabz Assignment\AddressBook\AddressBook\obj\Debug\net7.0\AddressBook.csproj.CoreCompileInputs.cache
+D:\BridgeLabz Assignment\AddressBook\AddressBook\obj\Debug\net7.0\AddressBook.dll
+D:\BridgeLabz Assignment\AddressBook\AddressBook\obj\Debug\net7.0\refint\AddressBook.dll
+D:\BridgeLabz Assignment\AddressBook\AddressBook\obj\Debug\net7.0\AddressBook.pdb
+D:\BridgeLabz Assignment\AddressBook\AddressBook\obj\Debug\net7.0\AddressBook.genruntimeconfig.cache
+D:\BridgeLabz Assignment\AddressBook\AddressBook\obj\Debug\net7.0\ref\AddressBook.dll
