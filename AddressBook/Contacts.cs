@@ -18,12 +18,6 @@ namespace AddressBook
         public string Email { get; set; }
         public string PhoneNumber { get; set; }
 
-        public string DisplayRecord()
-        {
-            
-            return $"Your details are : \n\nFirstName is : {this.FirstName} \nLastName is : {this.LastName} \nAddress is : {this.Address} \nCity is :{this.City} \nState is :{this.State} \nZipCode is : {this.ZipCode} \nEmail is : {this.Email} \nPhoneNumber is : {this.PhoneNumber}";
-        }
-
         public void GetUserInfo()
         {
             Console.WriteLine("\nPlease enter your details :");
@@ -45,7 +39,15 @@ namespace AddressBook
             this.PhoneNumber = Console.ReadLine();
         }
 
+        public string DisplayRecord()
+        {
+
+            return $"Your details are : \n\nFirstName is : {this.FirstName} \nLastName is : {this.LastName} \nAddress is : {this.Address} \nCity is :{this.City} \nState is :{this.State} \nZipCode is : {this.ZipCode} \nEmail is : {this.Email} \nPhoneNumber is : {this.PhoneNumber}";
+        }
+
         
+
+
 
 
 
