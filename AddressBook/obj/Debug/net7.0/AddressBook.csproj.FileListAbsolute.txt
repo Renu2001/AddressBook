@@ -12,3 +12,4 @@ D:\BridgeLabz Assignment\AddressBook\AddressBook\obj\Debug\net7.0\refint\Address
 D:\BridgeLabz Assignment\AddressBook\AddressBook\obj\Debug\net7.0\AddressBook.pdb
 D:\BridgeLabz Assignment\AddressBook\AddressBook\obj\Debug\net7.0\AddressBook.genruntimeconfig.cache
 D:\BridgeLabz Assignment\AddressBook\AddressBook\obj\Debug\net7.0\ref\AddressBook.dll
+D:\BridgeLabz Assignment\AddressBook\AddressBook\obj\Debug\net7.0\AddressBook.sourcelink.json
