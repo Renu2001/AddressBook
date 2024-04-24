@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace AddressBook 
 {
@@ -14,9 +15,9 @@ namespace AddressBook
             Console.WriteLine("Welcome to Address Book Program");
         }
 
-        public void UpdateContactName(string currentName)
+        public void UpdateContact(string name)
         {
-            Contacts contactToUpdate = contactlist.Find(c => c.FirstName.Equals(currentName));
+            Contacts contactToUpdate = contactlist.Find(c => c.FirstName.Equals(name));
             if (contactToUpdate != null)
             {
                 contactToUpdate.GetUserInfo();
@@ -24,18 +25,29 @@ namespace AddressBook
             }
             else
             {
-                Console.WriteLine($" Record {currentName} not found.");
+                Console.WriteLine($" Record not found.");
             }
 
         }
 
+        public void DeleteContact(string name)
+        {
+            Contacts contactToDelete = contactlist.Find(c => c.FirstName.Equals(name));
+            if (contactToDelete != null)
+            {
+                contactlist.Remove(contactToDelete);
+                Console.WriteLine($" Deleted the record ");
+            }
+            else
+            {
+                Console.WriteLine($" Record not found.");
+            }
+        }
         static void Main(string[] args)
         {
 
             AddressBook a = new AddressBook();
 
-            
-            
             while (true)
             {
                 
@@ -65,8 +77,15 @@ namespace AddressBook
                 else if (input == "3")
                 {
                     Console.WriteLine("Enter name to update");
-                    string currentname = Console.ReadLine();
-                    a.UpdateContactName(currentname);
+                    string name = Console.ReadLine();
+                    a.UpdateContact(name);
+
+                }
+                else if (input == "4")
+                {
+                    Console.WriteLine("Enter name to delete");
+                    string name = Console.ReadLine();
+                    a.DeleteContact(name);
 
                 }
                 else if(input == "0") 
