@@ -76,53 +76,64 @@ namespace AddressBook
                 Console.Write("\nEnter Your Choice : ");
                 string input = Console.ReadLine();
 
-                if (input == "1")
+                switch (input)
                 {
-                    Contacts c = new Contacts();
-                    c.GetUserInfo();
-                    if (!contactlist.ContainsKey(c.FirstName))
-                        contactlist.Add(c.FirstName, c);
-                    else
-                        Console.WriteLine("Contact Already Exists....");
-                }
-                else if (input == "2")
-                {
-                    if (contactlist.Count > 0)
-                    {
-                        foreach (Contacts contact in contactlist.Values)
+                    case "1" :
                         {
-                            Console.WriteLine("=========================================");
-                            Console.WriteLine(contact.DisplayRecord());
-                            Console.WriteLine("=========================================");
+                            Contacts c = new Contacts();
+                            c.GetUserInfo();
+                            if (!contactlist.ContainsKey(c.FirstName))
+                                contactlist.Add(c.FirstName, c);
+                            else
+                                Console.WriteLine("Contact Already Exists....");
                         }
-                    }
-                    else
-                        Console.WriteLine("No Records Found !!");
-                }
-                else if (input == "3")
-                {
-                    Console.WriteLine("Enter name to update");
-                    string name = Console.ReadLine();
-                    UpdateContact(name);
+                        break;
+
+                    case "2" :
+                        {
+                            if (contactlist.Count > 0)
+                            {
+                                foreach (Contacts contact in contactlist.Values)
+                                {
+                                    Console.WriteLine("=========================================");
+                                    Console.WriteLine(contact.DisplayRecord());
+                                    Console.WriteLine("=========================================");
+                                }
+                            }
+                            else
+                                Console.WriteLine("No Records Found !!");
+                        }
+                        break;
+                        
+                    case "3" :
+                        {
+                            Console.WriteLine("Enter name to update");
+                            string name = Console.ReadLine();
+                            UpdateContact(name);
+                        }
+                        break;
+
+                    case "4" :
+                        {
+                            Console.WriteLine("Enter name to delete");
+                            string name = Console.ReadLine();
+                            DeleteContact(name);
+                        }
+                        break;
+
+                    case "5" :
+                        {
+                            Console.WriteLine("Enter city to search");
+                            string name = Console.ReadLine();
+                            SearchByCity(name);
+                        }
+                        break;
+
+                    case "0":
+                        break;
 
                 }
-                else if (input == "4")
-                {
-                    Console.WriteLine("Enter name to delete");
-                    string name = Console.ReadLine();
-                    DeleteContact(name);
-
-                }
-                else if (input == "5")
-                {
-                    Console.WriteLine("Enter city to search");
-                    string name = Console.ReadLine();
-                    SearchByCity(name);
-
-                }
-                else if (input == "0")
-                    break;
-
+                 
             }
 
         }

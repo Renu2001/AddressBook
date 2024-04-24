@@ -15,7 +15,7 @@ namespace AddressBook
         }
         public void AddAddressBook()
         {
-            Console.WriteLine("Enter address book name");
+            Console.WriteLine("Enter address book name : ");
             AddressBook user = new AddressBook();
             user.AddressBookName = Console.ReadLine();
             addressbookslist.Add(user.AddressBookName, user);
@@ -49,21 +49,22 @@ namespace AddressBook
                 Console.WriteLine("Type 0 to Exit ");
                 string option = Console.ReadLine();
 
-                if (option == "1")
+                switch (option)
                 {
-                    program.AddAddressBook();
+                    case "1":
+                        program.AddAddressBook();
+                        break;
+                    case "2":
+                        program.AddNewAddressBook();
+                        break;
+                    case "3":
+                        program.DisplayAddressBook();
+                        break;
+                    default:
+                        break;
                 }
-                else if(option == "2")
-                {
-                    program.AddNewAddressBook();
-                }
-                else if (option == "3")
-                {
-                    program.DisplayAddressBook();
-                }
-                else
-                    break;
-                }
+
+            }   
             
         }
     }
