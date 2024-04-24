@@ -14,13 +14,13 @@ namespace AddressBook
             Console.WriteLine("Welcome to Address Book Program");
         }
 
-        public void UpdateContactName(string currentName, string newName)
+        public void UpdateContactName(string currentName)
         {
             Contacts contactToUpdate = contactlist.Find(c => c.FirstName.Equals(currentName));
             if (contactToUpdate != null)
             {
-                contactToUpdate.FirstName = newName;
-                Console.WriteLine($" Updated the name : {currentName} ");
+                contactToUpdate.GetUserInfo();
+                Console.WriteLine($" Updated the record ");
             }
             else
             {
@@ -66,9 +66,7 @@ namespace AddressBook
                 {
                     Console.WriteLine("Enter name to update");
                     string currentname = Console.ReadLine();
-                    Console.WriteLine("Enter name to updated name");
-                    string newname = Console.ReadLine();
-                    a.UpdateContactName(currentname, newname);
+                    a.UpdateContactName(currentname);
 
                 }
                 else if(input == "0") 
@@ -76,7 +74,7 @@ namespace AddressBook
 
             }
             
-            //Console.WriteLine(c.DisplayRecord());
+            
 
             
         }
