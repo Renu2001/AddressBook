@@ -41,16 +41,8 @@ namespace AddressBook
 
         public string DisplayRecord()
         {
-
             return $"Your details are : \n\nFirstName is : {this.FirstName} \nLastName is : {this.LastName} \nAddress is : {this.Address} \nCity is :{this.City} \nState is :{this.State} \nZipCode is : {this.ZipCode} \nEmail is : {this.Email} \nPhoneNumber is : {this.PhoneNumber}";
         }
-
-        
-
-
-
-
-
 
     }
 }

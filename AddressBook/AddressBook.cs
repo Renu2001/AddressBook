@@ -7,14 +7,11 @@ using System.Xml.Linq;
 
 namespace AddressBook 
 {
-    internal class AddressBook
+    internal class AddressBook 
     {
-        List<Contacts> contactlist = new List<Contacts>();
-        static AddressBook()
-        {
-            Console.WriteLine("Welcome to Address Book Program");
-        }
+        public string AddressBookName { get; set; }
 
+        List<Contacts> contactlist = new List<Contacts>();
         public void UpdateContact(string name)
         {
             Contacts contactToUpdate = contactlist.Find(c => c.FirstName.Equals(name));
@@ -43,10 +40,10 @@ namespace AddressBook
             }
         }
 
+        
+
         public void ChooseOption()
         {
-            AddressBook a = new AddressBook();
-
             while (true)
             {
 
@@ -62,34 +59,34 @@ namespace AddressBook
                 {
                     Contacts c = new Contacts();
                     c.GetUserInfo();
-                    a.contactlist.Add(c);
+                    contactlist.Add(c);
                 }
                 else if (input == "2")
                 {
-                    foreach (Contacts contact in a.contactlist)
-                    {
-                        if (a.contactlist.Count > 0)
+                    if (contactlist.Count > 0)
+                    { 
+                        foreach (Contacts contact in contactlist)
                         {
-                            Console.WriteLine("=========================================");
-                            Console.WriteLine(contact.DisplayRecord());
-                            Console.WriteLine("=========================================");
+                                Console.WriteLine("=========================================");
+                                Console.WriteLine(contact.DisplayRecord());
+                                Console.WriteLine("=========================================");
                         }
-                        else
-                            Console.WriteLine("No Records to Delete");
                     }
+                    else
+                        Console.WriteLine("No Records Found !!");
                 }
                 else if (input == "3")
                 {
                     Console.WriteLine("Enter name to update");
                     string name = Console.ReadLine();
-                    a.UpdateContact(name);
+                    UpdateContact(name);
 
                 }
                 else if (input == "4")
                 {
                     Console.WriteLine("Enter name to delete");
                     string name = Console.ReadLine();
-                    a.DeleteContact(name);
+                    DeleteContact(name);
 
                 }
                 else if (input == "0")
