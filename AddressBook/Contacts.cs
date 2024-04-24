@@ -14,9 +14,9 @@ namespace AddressBook
         public string Address { get; set; }
         public string City { get; set; }
         public string State { get; set; }
-        public string ZipCode { get; set; }
+        public long ZipCode { get; set; }
         public string Email { get; set; }
-        public string PhoneNumber { get; set; }
+        public long PhoneNumber { get; set; }
 
         public void GetUserInfo()
         {
@@ -32,11 +32,11 @@ namespace AddressBook
             Console.Write("State :  ");
             this.State = Console.ReadLine();
             Console.Write("ZipCode :  ");
-            this.ZipCode = Console.ReadLine();
+            this.ZipCode = Convert.ToInt64(Console.ReadLine());
             Console.Write("Email :  ");
             this.Email = Console.ReadLine();
             Console.Write("PhoneNumber :  ");
-            this.PhoneNumber = Console.ReadLine();
+            this.PhoneNumber = Convert.ToInt64(Console.ReadLine());
         }
 
         public string DisplayRecord()

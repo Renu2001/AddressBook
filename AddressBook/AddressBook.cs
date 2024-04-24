@@ -27,7 +27,6 @@ namespace AddressBook
             {
                 Console.WriteLine($" Record not found.");
             }
-
         }
 
         public void DeleteContact(string name)
@@ -43,24 +42,24 @@ namespace AddressBook
                 Console.WriteLine($" Record not found.");
             }
         }
-        static void Main(string[] args)
-        {
 
+        public void ChooseOption()
+        {
             AddressBook a = new AddressBook();
 
             while (true)
             {
-                
-                Console.WriteLine("\nIf you want to add contact type 1");
-                Console.WriteLine("If you want to display contact type 2");
-                Console.WriteLine("If you want to update contact type 3");
+
+                Console.WriteLine("\nIf you want to Add contact type 1");
+                Console.WriteLine("If you want to Display contact type 2");
+                Console.WriteLine("If you want to Update contact type 3");
+                Console.WriteLine("If you want to Delete contact type 4");
                 Console.WriteLine("If you want to close type 0");
                 Console.Write("\nEnter Your Choice : ");
                 string input = Console.ReadLine();
 
                 if (input == "1")
                 {
-                    
                     Contacts c = new Contacts();
                     c.GetUserInfo();
                     a.contactlist.Add(c);
@@ -69,9 +68,14 @@ namespace AddressBook
                 {
                     foreach (Contacts contact in a.contactlist)
                     {
-                        Console.WriteLine("=========================================");
-                        Console.WriteLine(contact.DisplayRecord());
-                        Console.WriteLine("=========================================");
+                        if (a.contactlist.Count > 0)
+                        {
+                            Console.WriteLine("=========================================");
+                            Console.WriteLine(contact.DisplayRecord());
+                            Console.WriteLine("=========================================");
+                        }
+                        else
+                            Console.WriteLine("No Records to Delete");
                     }
                 }
                 else if (input == "3")
@@ -88,14 +92,12 @@ namespace AddressBook
                     a.DeleteContact(name);
 
                 }
-                else if(input == "0") 
+                else if (input == "0")
                     break;
 
             }
-            
-            
 
-            
         }
+        
     }
 }
