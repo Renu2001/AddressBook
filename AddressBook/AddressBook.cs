@@ -11,14 +11,15 @@ namespace AddressBook
     {
         public string AddressBookName { get; set; }
 
-        List<Contacts> contactlist = new List<Contacts>();
+        Dictionary<string, Contacts> contactlist = new Dictionary<string, Contacts>();
+       
         public void UpdateContact(string name)
         {
-            Contacts contactToUpdate = contactlist.Find(c => c.FirstName.Equals(name));
-            if (contactToUpdate != null)
+            if (contactlist.ContainsKey(name))
             {
+                Contacts contactToUpdate = contactlist[name];
                 contactToUpdate.GetUserInfo();
-                Console.WriteLine($" Updated the record ");
+                Console.WriteLine("Updated the record.");
             }
             else
             {
@@ -28,19 +29,16 @@ namespace AddressBook
 
         public void DeleteContact(string name)
         {
-            Contacts contactToDelete = contactlist.Find(c => c.FirstName.Equals(name));
-            if (contactToDelete != null)
+            if (contactlist.ContainsKey(name))
             {
-                contactlist.Remove(contactToDelete);
-                Console.WriteLine($" Deleted the record ");
+                contactlist.Remove(name);
+                Console.WriteLine("Deleted the record.");
             }
             else
             {
                 Console.WriteLine($" Record not found.");
             }
         }
-
-        
 
         public void ChooseOption()
         {
@@ -59,17 +57,20 @@ namespace AddressBook
                 {
                     Contacts c = new Contacts();
                     c.GetUserInfo();
-                    contactlist.Add(c);
+                    if (!contactlist.ContainsKey(c.FirstName))
+                        contactlist.Add(c.FirstName, c);
+                    else
+                        Console.WriteLine("Contact Already Exists....");
                 }
                 else if (input == "2")
                 {
                     if (contactlist.Count > 0)
-                    { 
-                        foreach (Contacts contact in contactlist)
+                    {
+                        foreach (Contacts contact in contactlist.Values)
                         {
-                                Console.WriteLine("=========================================");
-                                Console.WriteLine(contact.DisplayRecord());
-                                Console.WriteLine("=========================================");
+                            Console.WriteLine("=========================================");
+                            Console.WriteLine(contact.DisplayRecord());
+                            Console.WriteLine("=========================================");
                         }
                     }
                     else

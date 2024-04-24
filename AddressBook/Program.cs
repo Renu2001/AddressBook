@@ -8,7 +8,7 @@ namespace AddressBook
 {
     internal class Program
     {
-        Dictionary<string, AddressBook> addressbooks  = new Dictionary<string, AddressBook>();
+        Dictionary<string, AddressBook> addressbookslist  = new Dictionary<string, AddressBook>();
         static Program()
         {
             Console.WriteLine("Welcome to Address Book Program");
@@ -18,7 +18,7 @@ namespace AddressBook
             Console.WriteLine("Enter address book name");
             AddressBook user = new AddressBook();
             user.AddressBookName = Console.ReadLine();
-            addressbooks.Add(user.AddressBookName, user);
+            addressbookslist.Add(user.AddressBookName, user);
             Console.WriteLine($"Welcome to {user.AddressBookName}");
             user.ChooseOption();
 
@@ -31,9 +31,9 @@ namespace AddressBook
         
         public void DisplayAddressBook()
         {
-            foreach (KeyValuePair<string, AddressBook> books in addressbooks)
+            foreach (var books in addressbookslist.Values)
             {
-                Console.WriteLine("This are following AddressBooks of {0} ", books.Key);
+                Console.WriteLine("This are following AddressBooks of \n ", books.AddressBookName);
 
             }
         }
@@ -65,8 +65,6 @@ namespace AddressBook
                     break;
                 }
             
-            
-
         }
     }
 }
