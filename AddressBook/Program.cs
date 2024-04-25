@@ -79,7 +79,31 @@ namespace AddressBook
         
             
         }
-    static void Main(string[] args)
+
+        public void SearchByState()
+        {
+            bool flag = false;
+            Console.WriteLine("Enter name of city");
+            string statename = Console.ReadLine();
+            foreach (var books in addressbookslist.Values)
+            {
+                foreach (var contact in books.contactlist.Values)
+                {
+                    if (contact.State.Equals(statename))
+                    {
+                        flag = true;
+                        Console.WriteLine("=========================================");
+                        Console.WriteLine(contact.DisplayRecord());
+                        Console.WriteLine("=========================================");
+                    }
+                }
+            }
+            if (flag == true)
+                Console.WriteLine("Record Not Found");
+
+
+        }
+        static void Main(string[] args)
         {
             Program program = new Program();
             while (true)
@@ -89,6 +113,7 @@ namespace AddressBook
                 Console.WriteLine("Type 2 to Add New Address Book ");
                 Console.WriteLine("Type 3 to Display Address Book ");
                 Console.WriteLine("Type 3 to Search contact by city name ");
+                Console.WriteLine("Type 3 to Search contact by state name ");
                 Console.WriteLine("Type 0 to Exit ");
                 int option = Convert.ToInt32(Console.ReadLine());
 
