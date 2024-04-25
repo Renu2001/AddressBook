@@ -11,7 +11,7 @@ namespace AddressBook
     {
         public string AddressBookName { get; set; }
 
-        Dictionary<string, Contacts> contactlist = new Dictionary<string, Contacts>();
+        public Dictionary<string, Contacts> contactlist = new Dictionary<string, Contacts>();
 
         public void UpdateContact(string name)
         {
@@ -27,6 +27,7 @@ namespace AddressBook
             }
         }
 
+        
         public void DeleteContact(string name)
         {
             if (contactlist.ContainsKey(name))
@@ -74,11 +75,11 @@ namespace AddressBook
                 Console.WriteLine("If you want to Search contact by City type 5");
                 Console.WriteLine("If you want to close type 0");
                 Console.Write("\nEnter Your Choice : ");
-                string input = Console.ReadLine();
+                int input = Convert.ToInt32(Console.ReadLine());
 
                 switch (input)
                 {
-                    case "1" :
+                    case 1 :
                         {
                             Contacts c = new Contacts();
                             c.GetUserInfo();
@@ -89,7 +90,7 @@ namespace AddressBook
                         }
                         break;
 
-                    case "2" :
+                    case 2 :
                         {
                             if (contactlist.Count > 0)
                             {
@@ -105,7 +106,7 @@ namespace AddressBook
                         }
                         break;
                         
-                    case "3" :
+                    case 3 :
                         {
                             Console.WriteLine("Enter name to update");
                             string name = Console.ReadLine();
@@ -113,7 +114,7 @@ namespace AddressBook
                         }
                         break;
 
-                    case "4" :
+                    case 4 :
                         {
                             Console.WriteLine("Enter name to delete");
                             string name = Console.ReadLine();
@@ -121,7 +122,7 @@ namespace AddressBook
                         }
                         break;
 
-                    case "5" :
+                    case 5 :
                         {
                             Console.WriteLine("Enter city to search");
                             string name = Console.ReadLine();
@@ -129,9 +130,13 @@ namespace AddressBook
                         }
                         break;
 
-                    case "0":
+                   default :
                         break;
 
+                }
+                if(input == 0)
+                {
+                    break;
                 }
                  
             }
