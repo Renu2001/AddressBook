@@ -9,6 +9,7 @@ namespace AddressBook
     internal class Program
     {
         public Dictionary<string, AddressBook> addressbookslist = new Dictionary<string, AddressBook>();
+        Dictionary<string, List<string>> citylist = new Dictionary<string, List<string>>();
 
         static Program()
         {
@@ -149,14 +150,13 @@ namespace AddressBook
                 {
                     if (contact.City.Equals(cityname))
                     {
-                        count++;                }
+                        count++;                
+                    }
                 }
             }
             Console.WriteLine("Total no of person" + count);
-
-
-            Console.WriteLine();
         }
+        
         static void Main(string[] args)
             {
                 Program program = new Program();
