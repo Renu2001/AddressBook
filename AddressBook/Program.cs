@@ -45,7 +45,7 @@ namespace AddressBook
         {
             foreach (var books in addressbookslist.Values)
             {
-                Console.WriteLine("This are contacts of {0} ", books.AddressBookName);
+                Console.WriteLine("\nThis are contacts of {0} ", books.AddressBookName);
                 foreach (var contact in books.contactlist.Values)
                 {
                     if (contact != null)
@@ -60,7 +60,7 @@ namespace AddressBook
         {
             foreach (var books in addressbookslist.Values)
             {
-                Console.WriteLine("This are contacts of {0} ", books.AddressBookName);
+                Console.WriteLine("\nThis are contacts of {0} ", books.AddressBookName);
                 foreach (var contact in books.contactlist.Values.OrderBy(key => key.FirstName))
                 {
                     if (contact != null)
@@ -68,6 +68,46 @@ namespace AddressBook
                     else
                         Console.WriteLine("There are no contacts here");
                 }
+
+            }
+        }
+        public void SortByCity_State_Zip(string option)
+        {
+            
+            foreach (var books in addressbookslist.Values)
+            {
+                Console.WriteLine("\nThis are contacts of {0} ", books.AddressBookName);
+                if (option == "city")
+                {
+                    foreach (var contact in books.contactlist.Values.OrderBy(key => key.City))
+                    {
+                        if (contact != null)
+                            Console.WriteLine(contact.DisplayRecord());
+                        else
+                            Console.WriteLine("There are no contacts here");
+                    }
+                }
+                else if (option == "state")
+                {
+                    foreach (var contact in books.contactlist.Values.OrderBy(key => key.State))
+                    {
+                        if (contact != null)
+                            Console.WriteLine(contact.DisplayRecord());
+                        else
+                            Console.WriteLine("There are no contacts here");
+                    }
+                }
+                else if(option == "zip")
+                {
+                    foreach (var contact in books.contactlist.Values.OrderBy(key => key.ZipCode))
+                    {
+                        if (contact != null)
+                            Console.WriteLine(contact.DisplayRecord());
+                        else
+                            Console.WriteLine("There are no contacts here");
+                    }
+                }
+                    
 
             }
         }
@@ -128,6 +168,8 @@ namespace AddressBook
                     Console.WriteLine("Type 3 to Display Address Book ");
                     Console.WriteLine("Type 4 to Search contact by city name ");
                     Console.WriteLine("Type 5 to count by city ");
+                    Console.WriteLine("Type 6 to Sort by Name ");
+                    Console.WriteLine("Type 7 to Sort by city/Zip/State ");
                     Console.WriteLine("Type 0 to Exit ");
                     int option = Convert.ToInt32(Console.ReadLine());
 
@@ -150,6 +192,14 @@ namespace AddressBook
                             break;
                         case 6:
                             program.DisplayAddressBookByName();
+                            Console.WriteLine("Sorted By Name");
+
+                        break;
+                        case 7:
+                            Console.WriteLine("How you want to sort by zip/state/city");
+                            string a = Console.ReadLine();
+                            program.SortByCity_State_Zip(a);
+                            Console.WriteLine("Sorted");
                             break;
                     default:
                             break;
