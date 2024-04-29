@@ -56,6 +56,21 @@ namespace AddressBook
 
             }
         }
+        public void DisplayAddressBookByName()
+        {
+            foreach (var books in addressbookslist.Values)
+            {
+                Console.WriteLine("This are contacts of {0} ", books.AddressBookName);
+                foreach (var contact in books.contactlist.Values.OrderBy(key => key.FirstName))
+                {
+                    if (contact != null)
+                        Console.WriteLine(contact.DisplayRecord());
+                    else
+                        Console.WriteLine("There are no contacts here");
+                }
+
+            }
+        }
 
 
         public void SearchByCity()
@@ -133,7 +148,10 @@ namespace AddressBook
                         case 5:
                             program.CountPersonByCity();
                             break;
-                        default:
+                        case 6:
+                            program.DisplayAddressBookByName();
+                            break;
+                    default:
                             break;
                     }
                     if (option == 0)
