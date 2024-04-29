@@ -12,6 +12,7 @@ namespace AddressBook
         public string AddressBookName { get; set; }
 
         public Dictionary<string, Contacts> contactlist = new Dictionary<string, Contacts>();
+        public Dictionary<string, Contacts> citylist = new Dictionary<string, Contacts>();
 
         public void UpdateContact(string name)
         {
@@ -84,7 +85,10 @@ namespace AddressBook
                             Contacts c = new Contacts();
                             c.GetUserInfo();
                             if (!contactlist.ContainsKey(c.FirstName))
+                            {
                                 contactlist.Add(c.FirstName, c);
+                               
+                            }
                             else
                                 Console.WriteLine("Contact Already Exists....");
                         }

@@ -8,8 +8,8 @@ namespace AddressBook
 {
     internal class Program
     {
-        Dictionary<string, AddressBook> addressbookslist  = new Dictionary<string, AddressBook>();
-        Dictionary<string, Contacts> city;
+        public Dictionary<string, AddressBook> addressbookslist = new Dictionary<string, AddressBook>();
+
         static Program()
         {
             Console.WriteLine("Welcome to Address Book Program");
@@ -35,27 +35,28 @@ namespace AddressBook
                 {
                     AddAddressBook();
                 }
-               
+
             }
             else
                 Console.WriteLine("AddressBook Already Exists !!");
-            
+
         }
         public void DisplayAddressBook()
         {
             foreach (var books in addressbookslist.Values)
             {
                 Console.WriteLine("This are contacts of {0} ", books.AddressBookName);
-                foreach (var contact in books.contactlist.Values) 
+                foreach (var contact in books.contactlist.Values)
                 {
                     if (contact != null)
                         Console.WriteLine(contact.DisplayRecord());
                     else
                         Console.WriteLine("There are no contacts here");
                 }
-                
+
             }
         }
+
 
         public void SearchByCity()
         {
@@ -64,12 +65,11 @@ namespace AddressBook
             string cityname = Console.ReadLine();
             foreach (var books in addressbookslist.Values)
             {
+
                 foreach (var contact in books.contactlist.Values)
                 {
                     if (contact.City.Equals(cityname))
                     {
-                        city = new Dictionary<string, Contacts>();
-                        city.Add(cityname, contact);
                         flag = true;
                         Console.WriteLine("=========================================");
                         Console.WriteLine(contact.DisplayRecord());
@@ -82,42 +82,66 @@ namespace AddressBook
 
 
         }
-        static void Main(string[] args)
+        public void CountPersonByCity()
         {
-            Program program = new Program();
-            while (true)
+            int count = 0;
+            Console.WriteLine("Enter name of city");
+            string cityname = Console.ReadLine();
+            foreach (var books in addressbookslist.Values)
             {
-                Console.WriteLine("\nChoose the option ");
-                Console.WriteLine("Type 1 to Add Address Book ");
-                Console.WriteLine("Type 2 to Add New Address Book ");
-                Console.WriteLine("Type 3 to Display Address Book ");
-                Console.WriteLine("Type 3 to Search contact by city name ");
-                Console.WriteLine("Type 3 to Search contact by state name ");
-                Console.WriteLine("Type 0 to Exit ");
-                int option = Convert.ToInt32(Console.ReadLine());
 
-                switch (option)
+                foreach (var contact in books.contactlist.Values)
                 {
-                    case 1:
-                        program.AddAddressBook();
-                        break;
-                    case 2:
-                        program.AddAddressBook();
-                        break;
-                    case 3:
-                        program.DisplayAddressBook();
-                        break;
-                    case 4:
-                        program.SearchByCity();
-                        break;
-                    default:
-                        break;
+                    if (contact.City.Equals(cityname))
+                    {
+                        count++;                }
                 }
-                if (option == 0)
-                    break;
+            }
+            Console.WriteLine("Total no of person" + count);
 
-            }   
-            
+
+            Console.WriteLine();
         }
-    }
+        static void Main(string[] args)
+            {
+                Program program = new Program();
+                while (true)
+                {
+                    Console.WriteLine("\nChoose the option ");
+                    Console.WriteLine("Type 1 to Add Address Book ");
+                    Console.WriteLine("Type 2 to Add New Address Book ");
+                    Console.WriteLine("Type 3 to Display Address Book ");
+                    Console.WriteLine("Type 4 to Search contact by city name ");
+                    Console.WriteLine("Type 5 to count by city ");
+                    Console.WriteLine("Type 0 to Exit ");
+                    int option = Convert.ToInt32(Console.ReadLine());
+
+                    switch (option)
+                    {
+                        case 1:
+                            program.AddAddressBook();
+                            break;
+                        case 2:
+                            program.AddAddressBook();
+                            break;
+                        case 3:
+                            program.DisplayAddressBook();
+                            break;
+                        case 4:
+                            program.SearchByCity();
+                            break;
+                        case 5:
+                            program.CountPersonByCity();
+                            break;
+                        default:
+                            break;
+                    }
+                    if (option == 0)
+                        break;
+
+                }
+
+            }
+        }
+    
 }
