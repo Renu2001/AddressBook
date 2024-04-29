@@ -9,6 +9,7 @@ namespace AddressBook
     internal class Program
     {
         Dictionary<string, AddressBook> addressbookslist  = new Dictionary<string, AddressBook>();
+        Dictionary<string, Contacts> city;
         static Program()
         {
             Console.WriteLine("Welcome to Address Book Program");
@@ -63,34 +64,12 @@ namespace AddressBook
             string cityname = Console.ReadLine();
             foreach (var books in addressbookslist.Values)
             {
-                    foreach (var contact in books.contactlist.Values)
-                    {
-                        if (contact.City.Equals(cityname))
-                        {
-                            flag = true;
-                            Console.WriteLine("=========================================");
-                            Console.WriteLine(contact.DisplayRecord());
-                            Console.WriteLine("=========================================");
-                        }
-                    }
-            }
-            if (flag == true)
-                Console.WriteLine("Record Not Found");
-        
-            
-        }
-
-        public void SearchByState()
-        {
-            bool flag = false;
-            Console.WriteLine("Enter name of city");
-            string statename = Console.ReadLine();
-            foreach (var books in addressbookslist.Values)
-            {
                 foreach (var contact in books.contactlist.Values)
                 {
-                    if (contact.State.Equals(statename))
+                    if (contact.City.Equals(cityname))
                     {
+                        city = new Dictionary<string, Contacts>();
+                        city.Add(cityname, contact);
                         flag = true;
                         Console.WriteLine("=========================================");
                         Console.WriteLine(contact.DisplayRecord());
@@ -98,7 +77,7 @@ namespace AddressBook
                     }
                 }
             }
-            if (flag == true)
+            if (flag == false)
                 Console.WriteLine("Record Not Found");
 
 
