@@ -9,7 +9,6 @@ namespace AddressBook
     internal class Program
     {
         public Dictionary<string, AddressBook> addressbookslist = new Dictionary<string, AddressBook>();
-        Dictionary<string, List<string>> citylist = new Dictionary<string, List<string>>();
 
         static Program()
         {
@@ -74,44 +73,39 @@ namespace AddressBook
         }
         public void SortByCity_State_Zip(string option)
         {
-            
             foreach (var books in addressbookslist.Values)
             {
-                Console.WriteLine("\nThis are contacts of {0} ", books.AddressBookName);
+                Console.WriteLine($"\nThese are contacts of {books.AddressBookName}");
+
+                List<Contacts> sortedContacts = new List<Contacts>(books.contactlist.Values);
+
                 if (option == "city")
                 {
-                    foreach (var contact in books.contactlist.Values.OrderBy(key => key.City))
-                    {
-                        if (contact != null)
-                            Console.WriteLine(contact.DisplayRecord());
-                        else
-                            Console.WriteLine("There are no contacts here");
-                    }
+                    sortedContacts.Sort((c1, c2) => c1.City.CompareTo(c2.City));
                 }
                 else if (option == "state")
                 {
-                    foreach (var contact in books.contactlist.Values.OrderBy(key => key.State))
-                    {
-                        if (contact != null)
-                            Console.WriteLine(contact.DisplayRecord());
-                        else
-                            Console.WriteLine("There are no contacts here");
-                    }
+                    sortedContacts.Sort((c1, c2) => c1.State.CompareTo(c2.State));
                 }
-                else if(option == "zip")
+                else if (option == "zip")
                 {
-                    foreach (var contact in books.contactlist.Values.OrderBy(key => key.ZipCode))
+                    sortedContacts.Sort((c1, c2) => c1.ZipCode.CompareTo(c2.ZipCode));
+                }
+
+                if (sortedContacts.Count > 0)
+                {
+                    foreach (var contact in sortedContacts)
                     {
-                        if (contact != null)
-                            Console.WriteLine(contact.DisplayRecord());
-                        else
-                            Console.WriteLine("There are no contacts here");
+                        Console.WriteLine(contact.DisplayRecord());
                     }
                 }
-                    
-
+                else
+                {
+                    Console.WriteLine("There are no contacts here");
+                }
             }
         }
+
 
 
         public void SearchByCity()
@@ -145,14 +139,9 @@ namespace AddressBook
             string cityname = Console.ReadLine();
             foreach (var books in addressbookslist.Values)
             {
-
-                foreach (var contact in books.contactlist.Values)
-                {
-                    if (contact.City.Equals(cityname))
-                    {
-                        count++;                
-                    }
-                }
+                List<Contacts> citynames = new List<Contacts>(books.contactlist.Values);
+                count = citynames.Count;
+            
             }
             Console.WriteLine("Total no of person" + count);
         }
