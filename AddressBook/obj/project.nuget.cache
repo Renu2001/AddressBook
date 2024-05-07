@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "TUjdl0WZOulrodO31QBNRi5LizoeW94QVQA1g1Z6woyfKcfcrCHMst9skgfIW4RVwognRS96Hgz1Y9JeWfnCbA==",
+  "dgSpecHash": "yROKxUDUgANfJH3eAytwFws6pDR59919J6Y1rnvw4mPtOvMArlpMPLw14u2JWf1mPnJhbl6UBoTw3pfn3yaXNg==",
   "success": true,
   "projectFilePath": "D:\\BridgeLabz Assignment\\AddressBook\\AddressBook\\AddressBook.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\renuk\\.nuget\\packages\\csvhelper\\32.0.1\\csvhelper.32.0.1.nupkg.sha512"
+    "C:\\Users\\renuk\\.nuget\\packages\\csvhelper\\32.0.1\\csvhelper.32.0.1.nupkg.sha512",
+    "C:\\Users\\renuk\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
   ],
   "logs": []
 }

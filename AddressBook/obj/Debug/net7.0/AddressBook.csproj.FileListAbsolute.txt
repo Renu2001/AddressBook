@@ -16,3 +16,4 @@ D:\BridgeLabz Assignment\AddressBook\AddressBook\obj\Debug\net7.0\AddressBook.so
 D:\BridgeLabz Assignment\AddressBook\AddressBook\bin\Debug\net7.0\CsvHelper.dll
 D:\BridgeLabz Assignment\AddressBook\AddressBook\obj\Debug\net7.0\AddressBook.csproj.AssemblyReference.cache
 D:\BridgeLabz Assignment\AddressBook\AddressBook\obj\Debug\net7.0\AddressBook.csproj.CopyComplete
+D:\BridgeLabz Assignment\AddressBook\AddressBook\bin\Debug\net7.0\Newtonsoft.Json.dll

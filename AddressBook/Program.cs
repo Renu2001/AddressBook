@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using static System.Reflection.Metadata.BlobBuilder;
+using Newtonsoft.Json;
 
 namespace AddressBook
 {
@@ -18,7 +19,7 @@ namespace AddressBook
         {
             Console.WriteLine("Welcome to Address Book Program");
         }
-        
+
         public void AddAddressBook()
         {
             Console.WriteLine("Enter address book name : ");
@@ -49,41 +50,55 @@ namespace AddressBook
         public void DisplayAddressBook()
         {
 
-            using (var writer = new CsvWriter(File.CreateText("D:\\BridgeLabz Assignment\\Data.csv"), CultureInfo.InvariantCulture))
+            using (StreamWriter streamWriter = new StreamWriter("D:\\BridgeLabz Assignment\\ContactData.json", false))
             {
-                writer.WriteHeader<Contacts>();
-                writer.NextRecord();
                 foreach (var books in addressbookslist.Values)
                 {
                     foreach (var contact in books.contactlist.Values)
                     {
                         if (contact != null)
                         {
+                            string json = JsonConvert.SerializeObject(contact);
 
-                            writer.WriteRecord(contact);
-                            writer.NextRecord();
+                            streamWriter.WriteLine(json);
+
 
                         }
                         else
                             Console.WriteLine("There are no contacts here");
                     }
+                }
+                
 
-                }
-            }     
-            using (var reader = new StreamReader("D:\\BridgeLabz Assignment\\Data.csv"))
-            {
-                reader.BaseStream.Seek(0, SeekOrigin.Begin);
-                using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
-                {
-                    csv.Context.RegisterClassMap<ContactMap>();
-                    var contacts = csv.GetRecords<Contacts>();
-                    foreach (var contact in contacts)
-                    {
-                        Console.WriteLine(contact.ToString());
-                    }
-                }
             }
-            
+            Console.WriteLine("Contact Added");
+            string[] jsonData = File.ReadAllLines("D:\\BridgeLabz Assignment\\ContactData.json");
+            foreach (var data in jsonData)
+            {
+                Contacts a = JsonConvert.DeserializeObject<Contacts>(data);
+                Console.WriteLine(a.ToString());
+
+            }
+            //string[] jsonData = File.ReadAllLines("D:\\BridgeLabz Assignment\\ContactData.json");
+            //foreach(string c in jsonData)
+            //{
+            //Contacts contact1 = JsonConvert.DeserializeObject<Contacts>(c);
+            //Console.WriteLine(contact1.ToString());
+
+            //using (var reader = new StreamReader("D:\\BridgeLabz Assignment\\Data.csv"))
+            //{
+            //    reader.BaseStream.Seek(0, SeekOrigin.Begin);
+            //    using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
+            //    {
+            //        csv.Context.RegisterClassMap<ContactMap>();
+            //        var contacts = csv.GetRecords<Contacts>();
+            //        foreach (var contact in contacts)
+            //        {
+            //            Console.WriteLine(contact.ToString());
+            //        }
+            //    }
+            //}
+
 
 
         }
