@@ -14,6 +14,7 @@ namespace AddressBook
         {
             Console.WriteLine("Welcome to Address Book Program");
         }
+        
         public void AddAddressBook()
         {
             Console.WriteLine("Enter address book name : ");
@@ -35,24 +36,43 @@ namespace AddressBook
                 {
                     AddAddressBook();
                 }
-
             }
             else
                 Console.WriteLine("AddressBook Already Exists !!");
 
         }
+        
         public void DisplayAddressBook()
         {
-            foreach (var books in addressbookslist.Values)
-            {
-                Console.WriteLine("\nThis are contacts of {0} ", books.AddressBookName);
+            using (StreamWriter writer = new StreamWriter("D:\\BridgeLabz Assignment\\ContactData.txt", append: false))
+
+                foreach (var books in addressbookslist.Values)
+                {
+                writer.WriteLine("\nThis are contacts of {0} ", books.AddressBookName);
                 foreach (var contact in books.contactlist.Values)
                 {
                     if (contact != null)
-                        Console.WriteLine(contact.DisplayRecord());
+                    {
+                            writer.WriteLine(contact.ToString());
+                            writer.Flush();
+
+                        }
+                        
+                        
                     else
                         Console.WriteLine("There are no contacts here");
                 }
+
+            }
+            using (StreamReader reader = new StreamReader("D:\\BridgeLabz Assignment\\ContactData.txt"))
+            {
+
+                Console.WriteLine("=========================================");
+                string content = reader.ReadToEnd();
+                Console.WriteLine("File Content:");
+                Console.WriteLine(content);
+                Console.WriteLine("=========================================");
+
 
             }
         }
@@ -64,7 +84,7 @@ namespace AddressBook
                 foreach (var contact in books.contactlist.Values.OrderBy(key => key.FirstName))
                 {
                     if (contact != null)
-                        Console.WriteLine(contact.DisplayRecord());
+                        Console.WriteLine(contact.ToString());
                     else
                         Console.WriteLine("There are no contacts here");
                 }
@@ -96,7 +116,7 @@ namespace AddressBook
                 {
                     foreach (var contact in sortedContacts)
                     {
-                        Console.WriteLine(contact.DisplayRecord());
+                        Console.WriteLine(contact.ToString());
                     }
                 }
                 else
@@ -122,7 +142,7 @@ namespace AddressBook
                     {
                         flag = true;
                         Console.WriteLine("=========================================");
-                        Console.WriteLine(contact.DisplayRecord());
+                        Console.WriteLine(contact.ToString());
                         Console.WriteLine("=========================================");
                     }
                 }

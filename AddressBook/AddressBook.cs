@@ -14,6 +14,7 @@ namespace AddressBook
         public Dictionary<string, Contacts> contactlist = new Dictionary<string, Contacts>();
         public Dictionary<string, Contacts> citylist = new Dictionary<string, Contacts>();
 
+       
         public void UpdateContact(string name)
         {
             if (contactlist.ContainsKey(name))
@@ -21,6 +22,7 @@ namespace AddressBook
                 Contacts contactToUpdate = contactlist[name];
                 contactToUpdate.GetUserInfo();
                 Console.WriteLine("Updated the record.");
+                
             }
             else
             {
@@ -52,7 +54,7 @@ namespace AddressBook
                     if (contact.City.Equals(city))
                     {
                         Console.WriteLine("=========================================");
-                        Console.WriteLine(contact.DisplayRecord());
+                        Console.WriteLine(contact.ToString());
                         Console.WriteLine("=========================================");
                     }
                 }
@@ -87,7 +89,7 @@ namespace AddressBook
                             if (!contactlist.ContainsKey(c.FirstName))
                             {
                                 contactlist.Add(c.FirstName, c);
-                               
+                                
                             }
                             else
                                 Console.WriteLine("Contact Already Exists....");
@@ -95,19 +97,16 @@ namespace AddressBook
                         break;
 
                     case 2 :
-                        {
                             if (contactlist.Count > 0)
                             {
                                 foreach (Contacts contact in contactlist.Values)
                                 {
-                                    Console.WriteLine("=========================================");
-                                    Console.WriteLine(contact.DisplayRecord());
-                                    Console.WriteLine("=========================================");
+                                    Console.WriteLine(contact.ToString());
                                 }
                             }
                             else
                                 Console.WriteLine("No Records Found !!");
-                        }
+                        
                         break;
                         
                     case 3 :
