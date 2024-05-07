@@ -79,25 +79,7 @@ namespace AddressBook
                 Console.WriteLine(a.ToString());
 
             }
-            //string[] jsonData = File.ReadAllLines("D:\\BridgeLabz Assignment\\ContactData.json");
-            //foreach(string c in jsonData)
-            //{
-            //Contacts contact1 = JsonConvert.DeserializeObject<Contacts>(c);
-            //Console.WriteLine(contact1.ToString());
-
-            //using (var reader = new StreamReader("D:\\BridgeLabz Assignment\\Data.csv"))
-            //{
-            //    reader.BaseStream.Seek(0, SeekOrigin.Begin);
-            //    using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
-            //    {
-            //        csv.Context.RegisterClassMap<ContactMap>();
-            //        var contacts = csv.GetRecords<Contacts>();
-            //        foreach (var contact in contacts)
-            //        {
-            //            Console.WriteLine(contact.ToString());
-            //        }
-            //    }
-            //}
+            
 
 
 
