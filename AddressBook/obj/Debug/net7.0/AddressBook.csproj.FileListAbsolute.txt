@@ -13,3 +13,6 @@ D:\BridgeLabz Assignment\AddressBook\AddressBook\obj\Debug\net7.0\AddressBook.pd
 D:\BridgeLabz Assignment\AddressBook\AddressBook\obj\Debug\net7.0\AddressBook.genruntimeconfig.cache
 D:\BridgeLabz Assignment\AddressBook\AddressBook\obj\Debug\net7.0\ref\AddressBook.dll
 D:\BridgeLabz Assignment\AddressBook\AddressBook\obj\Debug\net7.0\AddressBook.sourcelink.json
+D:\BridgeLabz Assignment\AddressBook\AddressBook\bin\Debug\net7.0\CsvHelper.dll
+D:\BridgeLabz Assignment\AddressBook\AddressBook\obj\Debug\net7.0\AddressBook.csproj.AssemblyReference.cache
+D:\BridgeLabz Assignment\AddressBook\AddressBook\obj\Debug\net7.0\AddressBook.csproj.CopyComplete

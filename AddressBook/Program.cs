@@ -1,8 +1,12 @@
-﻿using System;
+﻿using CsvHelper;
+using System;
 using System.Collections.Generic;
+using System.Globalization;
+using CsvHelper.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Reflection.Metadata.BlobBuilder;
 
 namespace AddressBook
 {
@@ -41,40 +45,47 @@ namespace AddressBook
                 Console.WriteLine("AddressBook Already Exists !!");
 
         }
-        
+
         public void DisplayAddressBook()
         {
-            using (StreamWriter writer = new StreamWriter("D:\\BridgeLabz Assignment\\ContactData.txt", append: false))
 
+            using (var writer = new CsvWriter(File.CreateText("D:\\BridgeLabz Assignment\\Data.csv"), CultureInfo.InvariantCulture))
+            {
+                writer.WriteHeader<Contacts>();
+                writer.NextRecord();
                 foreach (var books in addressbookslist.Values)
                 {
-                writer.WriteLine("\nThis are contacts of {0} ", books.AddressBookName);
-                foreach (var contact in books.contactlist.Values)
-                {
-                    if (contact != null)
+                    foreach (var contact in books.contactlist.Values)
                     {
-                            writer.WriteLine(contact.ToString());
-                            writer.Flush();
+                        if (contact != null)
+                        {
+
+                            writer.WriteRecord(contact);
+                            writer.NextRecord();
 
                         }
-                        
-                        
-                    else
-                        Console.WriteLine("There are no contacts here");
+                        else
+                            Console.WriteLine("There are no contacts here");
+                    }
+
                 }
-
-            }
-            using (StreamReader reader = new StreamReader("D:\\BridgeLabz Assignment\\ContactData.txt"))
+            }     
+            using (var reader = new StreamReader("D:\\BridgeLabz Assignment\\Data.csv"))
             {
-
-                Console.WriteLine("=========================================");
-                string content = reader.ReadToEnd();
-                Console.WriteLine("File Content:");
-                Console.WriteLine(content);
-                Console.WriteLine("=========================================");
-
-
+                reader.BaseStream.Seek(0, SeekOrigin.Begin);
+                using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
+                {
+                    csv.Context.RegisterClassMap<ContactMap>();
+                    var contacts = csv.GetRecords<Contacts>();
+                    foreach (var contact in contacts)
+                    {
+                        Console.WriteLine(contact.ToString());
+                    }
+                }
             }
+            
+
+
         }
         public void DisplayAddressBookByName()
         {

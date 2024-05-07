@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CsvHelper.Configuration;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -31,12 +32,27 @@ namespace AddressBook
             this.City = Console.ReadLine();
             Console.Write("State :  ");
             this.State = Console.ReadLine();
-            Console.Write("ZipCode :  ");
-            this.ZipCode = Convert.ToInt64(Console.ReadLine());
+            try
+            {
+                Console.Write("ZipCode :  ");
+                this.ZipCode = Convert.ToInt64(Console.ReadLine());
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Enter number");
+            }
             Console.Write("Email :  ");
             this.Email = Console.ReadLine();
-            Console.Write("PhoneNumber :  ");
-            this.PhoneNumber = Convert.ToInt64(Console.ReadLine());
+            try
+            {
+                Console.Write("PhoneNumber :  ");
+                this.PhoneNumber = Convert.ToInt64(Console.ReadLine());
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Enter number");
+            }
+            
         }
 
         public override string ToString()
@@ -45,4 +61,21 @@ namespace AddressBook
         }
 
     }
+    internal class ContactMap : ClassMap<Contacts>
+    {
+        public ContactMap()
+        {
+            Map(m => m.FirstName).Name("FirstName");
+            Map(m => m.LastName).Name("LastName");
+            Map(m => m.Address).Name("Address");
+            Map(m => m.City).Name("City");
+            Map(m => m.State).Name("State");
+            Map(m => m.ZipCode).Name("ZipCode");
+            Map(m => m.Email).Name("Email");
+            Map(m => m.PhoneNumber).Name("PhoneNumber");
+
+        }
+    }
+
+
 }
