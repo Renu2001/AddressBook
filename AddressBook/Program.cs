@@ -50,7 +50,7 @@ namespace AddressBook
         public void DisplayAddressBook()
         {
 
-            using (StreamWriter streamWriter = new StreamWriter("D:\\BridgeLabz Assignment\\ContactData.json", false))
+            using (StreamWriter streamWriter = new StreamWriter("D:\\BridgeLabz Assignment\\ContactData.json"))
             {
                 foreach (var books in addressbookslist.Values)
                 {
